@@ -10,10 +10,9 @@ __pycache__/
 *.pyd
 *.log
 
-# IDE / Editor
+# IDE
 .idea/
 .vscode/
-*.sublime-*
 
 # OS
 .DS_Store
