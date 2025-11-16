@@ -1,22 +1,9 @@
-# Virtual Environment
 env/
 venv/
-ENV/
-
-# Python
 __pycache__/
 *.pyc
-*.pyo
-*.pyd
 *.log
-
-# IDE
 .idea/
 .vscode/
-
-# OS
 .DS_Store
-Thumbs.db
-
-# Misc
 *.env
