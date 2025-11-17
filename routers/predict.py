@@ -13,7 +13,7 @@ from models import User
 router = APIRouter()
 
 # ── LOAD MODEL ONCE (GLOBAL) ───────────────────
-MODEL_PATH = os.path.join(os.path.dirname(__file__), "..", "models", "final_tomato_model.h5")
+MODEL_PATH = "/home/user/Desktop/SmartFarmBackend/models/final_tomato_model_FIXED.h5"
 
 try:
     model = tf.keras.models.load_model(MODEL_PATH, compile=False)
