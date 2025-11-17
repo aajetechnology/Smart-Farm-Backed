@@ -3,7 +3,7 @@ uvicorn[standard]
 python-multipart
 
 # THE ONLY LINE THAT WORKS ON RAILWAY RIGHT NOW
-pyjose
+python-jose[cryptography]
 
 passlib[bcrypt]
 PyJWT
