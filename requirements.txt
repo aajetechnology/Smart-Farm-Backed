@@ -1,18 +1,21 @@
+# CORE
 fastapi
 uvicorn[standard]
 python-multipart
 
-
-python-jose[cryptography]
+# AUTH & SECURITY — SPLIT TO AVOID RAILWAY BUG
+python-jose
+cryptography
 
 passlib[bcrypt]
 PyJWT
 
+# DATABASE
 SQLAlchemy
 pydantic
 python-dotenv
 
-# AI MODEL — RAILWAY-FRIENDLY
+# AI MODEL
 tensorflow==2.19.0
 opencv-python-headless
 numpy
