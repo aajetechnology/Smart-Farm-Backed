@@ -1,16 +1,13 @@
-# CORE
 fastapi
 uvicorn[standard]
 python-multipart
 
-# AUTH & SECURITY — SPLIT TO AVOID RAILWAY BUG
-python-jose
-cryptography
+# THE ONLY LINE THAT WORKS ON RAILWAY RIGHT NOW
+pyjose
 
 passlib[bcrypt]
 PyJWT
 
-# DATABASE
 SQLAlchemy
 pydantic
 python-dotenv
