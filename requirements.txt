@@ -1,20 +1,18 @@
-fastapi==0.118.0
-uvicorn[standard]==0.37.0
-python-multipart==0.0.20
+fastapi
+uvicorn[standard]
+python-multipart
 
-# THIS LINE IS THE FIX — MUST BE EXACTLY LIKE THIS
+
 python-jose[cryptography]
 
-# AUTH
 passlib[bcrypt]
 PyJWT
 
-# DATABASE
-SQLAlchemy==2.0.43
-pydantic==2.11.10
+SQLAlchemy
+pydantic
 python-dotenv
 
-# AI MODEL — RAILWAY-FRIENDLY (NO PINNED VERSION = LATEST WORKING)
+# AI MODEL — RAILWAY-FRIENDLY
 tensorflow==2.19.0
 opencv-python-headless
 numpy
