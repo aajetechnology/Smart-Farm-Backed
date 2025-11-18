@@ -47,17 +47,4 @@ def root():
 
 
 
-# ─────────────────────── RENDER FIX — ADD THIS AT THE END OF app.py ───────────────────────
-import os
-import uvicorn
-
-if __name__ == "__main__":
-    # Render gives you a random PORT (like 10000), we MUST use it
-    port = int(os.environ.get("PORT", 8000))
-    uvicorn.run(
-        "app:app",           # ← app.py + app variable
-        host="0.0.0.0",      # ← CRITICAL: listen on all interfaces
-        port=port,           # ← Use Render's port
-        reload=True if os.environ.get("ENV") != "production" else False
-    )
-# ─────────────────────────────────────────────────────────────────────────────────────────────
+#
