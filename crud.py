@@ -4,11 +4,15 @@ from sqlalchemy import or_
 from models import User, Friendship, Message
 
 
-def get_contacts(db: Session, user_id: int):
-    return db.query(User).join(Friendship).filter(
-        (Friendship.user_id == user_id) | (Friendship.friend_id == user_id)
-    ).all()
 
+def get_contacts(db: Session, user_id: int):
+    contacts = (
+        db.query(User)
+        .join(Friendship, User.id == Friendship.friend_id)  # ← friend_id NOT contact_id
+        .filter(Friendship.user_id == user_id)
+        .all()
+    )
+    return contacts
 
 def add_contact(db: Session, user_id: int, target_username: str):
     clean_username = target_username.strip()

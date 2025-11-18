@@ -26,7 +26,8 @@ ACCESS_TOKEN_EXPIRE_MINUTES = 30
 router = APIRouter(prefix="/auth", tags=["auth"])
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/auth/login")
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/auth/login/")
+
 
 
 def get_current_user(token: str = Depends(oauth2_scheme), db: Session = Depends(get_db)):
@@ -97,6 +98,7 @@ async def register(
 
 
 # UPDATED: Return user in login response
+@router.post("/login", response_model=LoginResponse, include_in_schema=True)
 @router.post("/login", response_model=LoginResponse)
 async def login(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(get_db)):
     print(f"Login attempt for: {form_data.username}")

@@ -66,11 +66,13 @@ async def websocket_endpoint(websocket: WebSocket, token: str = Query(...), db: 
                 continue
             message = create_message(db, current_user.id, contact_id, content)
             await manager.send_personal_message({
+                "id": message.id,
                 "sender_id": message.sender_id,
                 "content": message.content,
                 "timestamp": message.timestamp.isoformat()
             }, current_user.id)
             await manager.send_personal_message({
+                "id": message.id,
                 "sender_id": message.sender_id,
                 "content": message.content,
                 "timestamp": message.timestamp.isoformat()
