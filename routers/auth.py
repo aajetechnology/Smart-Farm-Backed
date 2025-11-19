@@ -25,7 +25,13 @@ ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
 router = APIRouter(prefix="/auth", tags=["auth"])
 
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+pwd_context = CryptContext(
+    schemes=["bcrypt"],
+    deprecated="auto",
+    bcrypt__rounds=12,
+    bcrypt__ident="2b",      
+    truncate_inputs=True     
+)
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/auth/login/")
 
 
