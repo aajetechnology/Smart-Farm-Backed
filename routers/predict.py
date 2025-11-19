@@ -10,7 +10,7 @@ from routers.auth import get_current_user
 from models import User
 
 # Explicit prefix to match frontend
-router = APIRouter(prefix="/api", tags=["predict"])
+router = APIRouter()
 
 # ── GLOBAL MODEL (lazy load on first request) ─────────────────────
 model = None
