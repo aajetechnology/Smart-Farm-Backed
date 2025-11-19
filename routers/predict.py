@@ -9,7 +9,8 @@ from tensorflow.keras.models import load_model
 from routers.auth import get_current_user
 from models import User
 
-router = APIRouter()
+# Explicit prefix to match frontend
+router = APIRouter(prefix="/api", tags=["predict"])
 
 # ── GLOBAL MODEL (lazy load on first request) ─────────────────────
 model = None
@@ -20,8 +21,8 @@ def get_model():
     if model is None:
         # This path works on Render AND local
         MODEL_PATH = os.path.join(
-            os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 
-            "models", 
+            os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+            "models",
             "final_tomato_model_FIXED.h5"
         )
         print(f"Loading model from: {MODEL_PATH}")
@@ -42,7 +43,7 @@ CLASSES = [
     "Tomato_mosaic_virus", "healthy", "powdery_mildew"
 ]
 
-@router.post("/api/predict-plant")
+@router.post("/predict-plant")
 async def predict_plant(
     file: UploadFile = File(...),
     current_user: User = Depends(get_current_user)
