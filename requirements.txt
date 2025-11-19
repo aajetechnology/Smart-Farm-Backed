@@ -19,3 +19,5 @@ tensorflow
 opencv-python-headless
 numpy
 pillow
+
+bcrypt==4>=4.1.3
