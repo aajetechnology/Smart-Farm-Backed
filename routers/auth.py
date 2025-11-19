@@ -28,9 +28,10 @@ router = APIRouter(prefix="/auth", tags=["auth"])
 pwd_context = CryptContext(
     schemes=["bcrypt"],
     deprecated="auto",
+    # 🔥 THIS LINE FIXES THE 72-BYTE LIMIT ON RENDER
+    bcrypt__ident="2b",  # Uses OpenBSD bcrypt (no 72-byte cap)
+    # Optional: Tune rounds if you want (default 12 is fine for most apps)
     bcrypt__rounds=12,
-    bcrypt__ident="2b",      
-    truncate_inputs=True     
 )
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/auth/login/")
 
